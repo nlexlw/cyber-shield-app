@@ -3,38 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>КиберЩит 2026</title>
-
+    <title>CyberShield 2026</title>
     <link rel="stylesheet" href="style.css">
-
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
     <div class="glow"></div>
 
-    <div class="container">
-        <div class="status-badge">Защита активна</div>
-        <h1>#КиберПраво</h1>
-        <p id="welcome-user" style="opacity: 0.7; font-size: 14px;">Инициализация системы...</p>
+    <header>
+        <div class="status-dot"></div>
+        <span id="header-title">ОБЪЕКТ: ЗАГРУЗКА...</span>
+    </header>
 
-        <div class="crypto-box">
-            <label style="font-size: 11px; opacity: 0.5; text-transform: uppercase; letter-spacing: 1px;">
-                Шифрование сообщений
-            </label>
-            <textarea id="text-to-encrypt" rows="3" placeholder="Введите текст, который нужно скрыть..."></textarea>
-
-            <button class="main-btn" onclick="encryptText()">
-                🔒 Зашифровать по ГОСТ
-            </button>
-
-            <div id="result" style="display: none; margin-top: 15px; word-break: break-all; color: var(--neon-blue); background: rgba(0, 212, 255, 0.1); padding: 10px; border-radius: 8px; font-family: monospace; font-size: 11px;">
+    <main id="app-content">
+        <section id="home" class="tab-content active">
+            <div class="rank-card">
+                <div class="circular-progress">
+                    <span id="ui-score">0</span>
+                </div>
+                <p id="ui-rank">РАНГ: НОВИЧОК</p>
+                <div class="progress-bar-bg"><div id="ui-progress" class="progress-bar-fill"></div></div>
             </div>
-        </div>
+            <div class="status-box">
+                <p>🛡️ Защита устройства: <b>АКТИВНА</b></p>
+                <p>🛰️ Соединение: <b>SECURE</b></p>
+            </div>
+        </section>
 
-        <p style="font-size: 10px; margin-top: 20px; opacity: 0.4;">
-            Версия системы: 2.0.26-alpha
-        </p>
-    </div>
+        <section id="scan" class="tab-content">
+            <div class="tool-box">
+                <h3>СКАНЕР ССЫЛОК</h3>
+                <p style="font-size: 11px; opacity: 0.6; margin-bottom: 15px;">Анализ через VirusTotal v3 и базы МВД РБ</p>
+                <input type="text" id="url-input" placeholder="https://suspicious-site.com">
+                <button class="main-btn scan-btn" onclick="startScan()">ЗАПУСТИТЬ АНАЛИЗ</button>
+                <div id="scan-result" class="result-area"></div>
+            </div>
+        </section>
+
+        <section id="academy" class="tab-content">
+            <div class="quiz-box" id="quiz-container">
+                <h3>КИБЕР-ЭКЗАМЕН</h3>
+                <div id="quiz-flow">
+                    <p>Проверь свои знания и повысь ранг защиты.</p>
+                    <button class="main-btn" onclick="runQuiz()">НАЧАТЬ ТЕСТ</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="legal" class="tab-content">
+            <h3>#КИБЕРПРАВО РБ</h3>
+            <div class="legal-card">
+                <strong>Статья 212 УК РБ</strong>
+                <p>Хищение путем модификации компьютерной информации. Наказывается вплоть до 12 лет лишения свободы.</p>
+            </div>
+            <div class="legal-card">
+                <strong>Статья 349 УК РБ</strong>
+                <p>Несанкционированный доступ к компьютерной информации. Ответственность с 14 лет.</p>
+            </div>
+        </section>
+    </main>
+
+    <nav class="bottom-nav">
+        <div class="nav-item active" onclick="switchTab('home', this)">🏠</div>
+        <div class="nav-item" onclick="switchTab('scan', this)">🛡️</div>
+        <div class="nav-item" onclick="switchTab('academy', this)">🎓</div>
+        <div class="nav-item" onclick="switchTab('legal', this)">⚖️</div>
+    </nav>
 
     <script src="app.js"></script>
 </body>
